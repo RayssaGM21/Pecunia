@@ -1,0 +1,25 @@
+.card {
+    border-radius: 10px;
+}
+/* 
+.card-header {
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+} */
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn {
+    border-radius: 5px;
+}
+
+.logo-min {
+    height: 45px;
+    margin-right: 50px;
+}
+

@@ -1,0 +1,14 @@
+.mensagem-fail-financas{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ENTRADA{
+    color: green !important;
+}
+
+.SAÍDA{
+    color: red !important;
+}
