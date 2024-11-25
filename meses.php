@@ -33,6 +33,8 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Global css -->
     <link rel="stylesheet" href="./css/global.css">
+    <!-- Meses css -->
+    <link rel="stylesheet" href="./css/meses.css">
 
     <title>Meses</title>
 </head>
@@ -77,12 +79,23 @@ if (isset($_GET['id'])) {
                             </thead>
                             <tbody>
                                 <?php foreach ($meses as $mese): ?>
+                                    <?php
+                                    $status = 'positivo';
+                                    if ($mese['saldo'] < 0) {
+                                        $status = 'negativo';
+                                    } elseif ($mese['saldo'] == 0) {
+                                        $status = 'neutro';
+                                    }
+                                    ?>
                                     <tr>
                                         <td><?php echo $mese['id'] ?></td>
                                         <td><?php echo $mese['nome_mes'] ?></td>
                                         <td><?php echo $mese['ano'] ?></td>
-                                        <td><?php echo $mese['saldo'] ?></td>
+                                        <td class="<?= $status ?>">R$<?php echo number_format($mese['saldo'], 2, ',', '.') ?></td>
                                         <td>
+                                            <a href="financas-edit.php" class="btn btn-secondary btn-sm">
+                                                <i class="bi bi-plus icone-mais"></i>
+                                            </a>
                                             <a href="javascript:void(0);"
                                                 class="btn btn-secondary btn-sm edit-link"
                                                 data-id="<?= $mese['id'] ?>"
@@ -92,7 +105,9 @@ if (isset($_GET['id'])) {
                                                 <i class="bi bi-pencil-fill"></i>
                                             </a>
                                             <form action="acoes.php" method="POST" class="d-inline">
-                                                <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_mes" value="<?= $mese['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
+                                                <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_mes" value="<?= $mese['id'] ?>" type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -136,7 +151,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="modal-footer">
                             <a href="meses.php" class="btn btn-outline-secondary">Cancelar</a>
-                            <button type="submit" name="edit_mes" class="btn btn-warning">Salvar</button>
+                            <button type="submit" name="edit_mes" class="btn botao">Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -168,11 +183,11 @@ if (isset($_GET['id'])) {
                             <label for="txt-ano" class="form-label">Ano</label>
                             <input type="text" id="txt-ano" class="form-control" name="txt-ano" placeholder="Selecione um ano...">
                         </div>
-                        
+
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" name="create-mes" class="btn btn-warning">Salvar</button>
+                            <button type="submit" name="create-mes" class="btn botao">Salvar</button>
                         </div>
                     </form>
                 </div>
