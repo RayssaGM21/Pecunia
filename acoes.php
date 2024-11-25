@@ -14,14 +14,37 @@ if (isset($_POST['create-mes'])) {
 
 if (isset($_POST['edit_mes'])) {
     $idMes = mysqli_real_escape_string($conn, $_POST['edit-id']);
-    $nomeMes = trim($_POST['txt-nome-mes-edit']);
-    $ano = trim($_POST['txt-ano-edit']);
+    $novoMesNome = intval(trim($_POST['txt-nome-mes-edit']));
+    $novoAno = mysqli_real_escape_string($conn, trim($_POST['txt-ano-edit']));
 
-    $sql = "UPDATE meses SET nome = '$nomeMes', ano = '$ano' WHERE id = '$idMes'";
-    mysqli_query($conn, $sql);
-    header('Location: meses.php');
-    exit();
+    mysqli_begin_transaction($conn);
+
+    try {
+        $sqlUpdateMes = "UPDATE meses SET nome = $novoMesNome, ano = '$novoAno' WHERE id = $idMes";
+        if (!mysqli_query($conn, $sqlUpdateMes)) {
+            throw new Exception("Erro ao atualizar o mês: " . mysqli_error($conn));
+        }
+
+        $sqlUpdateFinancas = "
+            UPDATE financas f
+            JOIN meses m ON f.fk_mes_id = m.id
+            SET f.data = DATE_FORMAT(f.data, CONCAT('$novoAno-', LPAD($novoMesNome, 2, '0'), '-%d'))
+            WHERE f.fk_mes_id = $idMes
+        ";
+        if (!mysqli_query($conn, $sqlUpdateFinancas)) {
+            throw new Exception("Erro ao atualizar as datas das finanças: " . mysqli_error($conn));
+        }
+
+        mysqli_commit($conn);
+        echo "Mês e finanças associados atualizados com sucesso.";
+        header('Location: meses.php');
+        exit();
+    } catch (Exception $e) {
+        mysqli_rollback($conn);
+        echo "Erro ao atualizar o mês e finanças: " . $e->getMessage();
+    }
 }
+
 
 if (isset($_POST['delete_mes'])) {
     $mesId = mysqli_real_escape_string($conn, $_POST['delete_mes']);
@@ -88,14 +111,56 @@ if (isset($_POST['create-financa'])) {
 
     $sql = "INSERT INTO financas (tipo, data, descricao, valor, fk_categoria_id, fk_mes_id) 
             VALUES ('$tipo', '$data', '$descricao', '$valor', $categoriaId, $idMes)";
-    // echo $sql;
     mysqli_query($conn, $sql);
+
+    $sqlBuscarSaldo = "SELECT saldo FROM meses WHERE id = $idMes";
+    $resultadoSaldo = mysqli_query($conn, $sqlBuscarSaldo);
+    $saldoAtual = 0;
+    if ($resultadoSaldo && mysqli_num_rows($resultadoSaldo) > 0) {
+        $saldoMes = mysqli_fetch_assoc($resultadoSaldo);
+        $saldoAtual = $saldoMes['saldo'];
+    }
+    if ($tipo == 'ENTRADA') {
+        $novoSaldo = $saldoAtual + $valor;
+    } elseif ($tipo == 'SAÍDA') {
+        $novoSaldo = $saldoAtual - $valor;
+    }
+    $sqlUpdateSaldo = "UPDATE meses SET saldo = $novoSaldo WHERE id = $idMes";
+    mysqli_query($conn, $sqlUpdateSaldo);
     header('Location: financas.php');
     exit();
+}
 
-    // if (mysqli_query($conn, $sql)) {
 
-    // } else {
-    //     echo "Erro ao inserir a finança: " . mysqli_error($conn);
-    // }
+if (isset($_POST['edit_financa'])) {
+    $idFinanca = mysqli_real_escape_string($conn, $_POST['edit-id']);
+    $valor = intval(str_replace(['R$', ' ', '.'], '', $_POST['txt-valor']));
+    $descricao = trim($_POST['txt-descricao']);
+    $data = trim($_POST['txt-data']);
+    $tipo = trim($_POST['txt-tipo']);
+    $categoriaId = mysqli_real_escape_string($conn, $_POST['txt-categoria']);
+    $idMes = trim($_POST['edit-id-mes']);
+
+
+    $sql = "UPDATE financas 
+            SET valor = '$valor', descricao = '$descricao', data = '$data', tipo = '$tipo', fk_categoria_id = '$categoriaId' 
+            WHERE id = '$idFinanca'";
+    mysqli_query($conn, $sql);
+
+    $sqlBuscarSaldo = "SELECT saldo FROM meses WHERE id = $idMes";
+    $resultadoSaldo = mysqli_query($conn, $sqlBuscarSaldo);
+    $saldoAtual = 0;
+    if ($resultadoSaldo && mysqli_num_rows($resultadoSaldo) > 0) {
+        $saldoMes = mysqli_fetch_assoc($resultadoSaldo);
+        $saldoAtual = $saldoMes['saldo'];
+    }
+    if ($tipo == 'ENTRADA') {
+        $novoSaldo = $saldoAtual + $valor;
+    } elseif ($tipo == 'SAÍDA') {
+        $novoSaldo = $saldoAtual - $valor;
+    }
+    $sqlUpdateSaldo = "UPDATE meses SET saldo = $novoSaldo WHERE id = $idMes";
+    mysqli_query($conn, $sqlUpdateSaldo);
+    header('Location: financas.php');
+    exit();
 }
