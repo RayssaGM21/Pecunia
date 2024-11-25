@@ -1,0 +1,16 @@
+.positivo{
+    background-color: #90EE90 !important;
+}
+
+.negativo{
+    background-color: #8B0000 !important;
+    color: #ffff !important;
+}
+
+.neutro{
+    background-color: #FFD700 !important;
+}
+
+.icone-mais{
+    font-weight: 900 !important;
+}
