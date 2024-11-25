@@ -6,14 +6,16 @@ $sql = "
     SELECT mes.nome AS nome_mes, meses.ano, meses.id AS id_mes
     FROM meses
     JOIN mes ON meses.nome = mes.id
-    ORDER BY meses.ano, mes.nome
+    ORDER BY meses.ano DESC, mes.nome DESC
 ";
 $meses = mysqli_query($conn, $sql);
 
 $financas = [];
-if (isset($_POST['mes'])) {
-    $idMes = $_POST['mes'];
+$saldo = 0;  
+$status = 'positivo';
 
+if (isset($_POST['mes']) && !empty($_POST['mes'])) {
+    $idMes = $_POST['mes'];
     $sqlFinancas = "
         SELECT financas.*, categoria.nome AS nome_categoria
         FROM financas
@@ -22,8 +24,26 @@ if (isset($_POST['mes'])) {
     ";
     $result = mysqli_query($conn, $sqlFinancas);
     $financas = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
 
+    $entradas = 0;
+    $saidas = 0;
+
+    foreach ($financas as $financa) {
+        if ($financa['tipo'] == 'ENTRADA') {
+            $entradas += $financa['valor'];
+        }
+        if ($financa['tipo'] == 'SAÍDA') {
+            $saidas += $financa['valor'];
+        }
+    }
+    $saldo = $entradas - $saidas;
+    if ($saldo < 0){
+        $status = 'negativo';
+    }
+    elseif ($saldo == 0){
+        $status = 'neutro';
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,20 +79,20 @@ if (isset($_POST['mes'])) {
     </nav>
 
     <div class="container mt-4">
-        <form method="POST" action="financas.php" class="mb-4">
+        <form method="POST" action="financas.php" class="mb-4" id="form-mes">
             <div class="mb-3">
                 <label for="mes" class="form-label">Escolha um Mês e Ano</label>
-                <select class="form-select" id="mes" name="mes" required>
+                <select class="form-select" id="mes" name="mes" required onchange="document.getElementById('form-mes').submit();">
                     <option value="">Selecione o Mês e Ano</option>
                     <?php
                     foreach ($meses as $row) {
                         $mesAno = $row['nome_mes'] . ' ' . $row['ano'];
-                        echo "<option value='{$row['id_mes']}'>$mesAno</option>";
+                        $selected = (isset($_POST['mes']) && $_POST['mes'] == $row['id_mes']) ? 'selected' : '';
+                        echo "<option value='{$row['id_mes']}' $selected>$mesAno</option>";
                     }
                     ?>
                 </select>
             </div>
-            <button type="submit" class="btn btn-warning">Ver Finanças</button>
         </form>
 
         <?php if (!empty($financas)): ?>
@@ -82,6 +102,11 @@ if (isset($_POST['mes'])) {
                     <i class="bi bi-piggy-bank"></i> Adicionar Finança
                 </a>
             </h3>
+            
+            <div class="saldo <?=$status?>">
+                <h4>Saldo do Mês: R$ <?= number_format($saldo, 2, ',', '.') ?></h4>
+            </div>
+
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
@@ -108,14 +133,14 @@ if (isset($_POST['mes'])) {
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
                                 <form action="acoes.php" method="POST" class="d-inline">
-                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_usuario" value="<?= $usuario['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
+                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_usuario" value="<?= $financa['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php elseif (isset($_POST['mes'])): ?>
+        <?php elseif (isset($_POST['mes']) && empty($financas)): ?>
             <div class="mensagem-fail-financas">
                 <i class="bi bi-exclamation-circle" style="font-size: 60px;"></i>
                 <h5> Não há finanças registradas para o mês selecionado</h5>
