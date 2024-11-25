@@ -110,7 +110,7 @@ $categoria = mysqli_query($conn, $sql);
                         </div>
                         <div class="modal-footer">
                             <a href="meses.php" class="btn btn-outline-secondary">Cancelar</a>
-                            <button type="submit" name="edit_categoria" class="btn btn-warning">Salvar</button>
+                            <button type="submit" name="edit_categoria" class="btn botao">Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -130,7 +130,7 @@ $categoria = mysqli_query($conn, $sql);
                     <form action="acoes.php" method="POST">
                         <div class="mb-3">
                             <label for="txt-nome-categoria">Nome</label>
-                            <input type="text" id="txt-nome-categoria" class="form-control" name="txt-nome-categoria" placeholder="Digite o nome da categoria..." require>
+                            <input type="text" id="txt-nome-categoria" class="form-control" name="txt-nome-categoria" placeholder="Digite o nome da categoria..." required>
                             </select>
                         </div>
 
@@ -141,7 +141,7 @@ $categoria = mysqli_query($conn, $sql);
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" name="create-categoria" class="btn btn-warning">Salvar</button>
+                            <button type="submit" name="create-categoria" class="btn botao">Salvar</button>
                         </div>
                     </form>
                 </div>
