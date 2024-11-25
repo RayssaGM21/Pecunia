@@ -1,0 +1,53 @@
+.icon-size {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    line-height: 25px;
+    color: black;
+}
+
+.cont-info {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.cont-info p {
+    margin-bottom: 15px;
+}
+
+.cont-info a {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.color1 {
+    background-color: #96dafa;
+}
+
+.color2 {
+    background-color: #e2bcf7;
+}
+
+.color3 {
+    background-color: #bcf7da;
+}
+
+.pecunia {
+    height: 70px;
+}
+
+.items {
+    text-decoration: none;
+    color: #947125;
+}
+
+
