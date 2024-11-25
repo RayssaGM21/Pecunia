@@ -13,6 +13,7 @@ $mes = mysqli_query($conn, $sqlMes);
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT meses.*, mes.nome AS nome_mes FROM meses JOIN mes ON meses.nome = mes.id WHERE meses.id = $id";
+    
     $mesesList = mysqli_query($conn, $sql);
     $mesesList = mysqli_fetch_assoc($mesesList);
 }
