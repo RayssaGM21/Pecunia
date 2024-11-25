@@ -3,7 +3,6 @@ session_start();
 require_once('conexao.php');
 
 $idMes = isset($_GET['id']) ? $_GET['id'] : null;
-
 if ($idMes) {
     $sql = "SELECT mes.nome AS nome_mes, meses.ano, mes.id AS numero_mes
             FROM meses
@@ -16,7 +15,7 @@ if ($idMes) {
         $mesNome = $mes['nome_mes'];
         $ano = $mes['ano'];
         $numeroMes = $mes['numero_mes'];
-        $minDate = "$ano-" . str_pad($numeroMes, 2, '0', STR_PAD_LEFT) . "-01";
+        $minDate = sprintf("%04d-%02d-01", $ano, $numeroMes);
         $maxDate = date("Y-m-t", strtotime($minDate));
     }
 } else {
@@ -106,7 +105,7 @@ $categorias = mysqli_query($conn, $sqlCategorias);
 
                             <div class="mb-3" style="display: flex; gap: 8px; justify-content: end;">
                                 <a href="financas.php" class="btn btn-outline-secondary float-end">Cancelar</a>
-                                <button type="submit" name="create-financa" class="btn btn-warning float-end">Salvar</button>
+                                <button type="submit" name="create-financa" class="btn botao float-end">Salvar</button>
                             </div>
                         </form>
                     </div>
@@ -117,17 +116,8 @@ $categorias = mysqli_query($conn, $sqlCategorias);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <script>
-        function formatarValor() {
-            var valor = document.getElementById('txt-valor').value;
-            valor = valor.replace(/[^0-9]/g, "");
-            if (valor.length > 2) {
-                valor = valor.slice(0, valor.length - 2) + "," + valor.slice(valor.length - 2);
-            }
-            valor = "R$ " + valor;
-            document.getElementById('txt-valor').value = valor;
-        }
-    </script>
+    <script src="./formataValor.js"></script>
+
 </body>
 
 </html>
