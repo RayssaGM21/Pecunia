@@ -6,11 +6,11 @@
 }
 
 .ENTRADA{
-    color: green !important;
+    color: #4f8f25 !important;
 }
 
 .SAÍDA{
-    color: red !important;
+    color: #942525 !important;
 }
 
 .saldo{
@@ -19,15 +19,17 @@
     border-radius: 15px;
 
     &.positivo{
-        background-color: #90EE90;
+        color: #4f8f25;
+        font-weight: 900;
     }
 
     &.negativo{
-        background-color: #8B0000;
-        color: #ffff;
+        color: #942525;
+        font-weight: 900;
     }
 
     &.neutro{
-        background-color: #FFD700;
+        color: #f2c14e;
+        font-weight: 900;
     }
 }
