@@ -68,6 +68,7 @@ if (isset($_GET['id'])) {
                         </h4>
                     </div>
                     <div class="card-body">
+                        <?php include('message.php') ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
