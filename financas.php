@@ -58,8 +58,9 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Global css -->
     <link rel="stylesheet" href="./css/global.css">
+    <!-- Financas css -->
     <link rel="stylesheet" href="./css/financas.css">
-    <title>Pecunia</title>
+    <title>Finanças</title>
 </head>
 
 <body>
