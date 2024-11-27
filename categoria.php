@@ -48,9 +48,9 @@ $categoria = mysqli_query($conn, $sql);
                                 <i class="bi bi-bookmark-plus"></i> Adicionar Categoria
                             </a>
                         </h4>
-
                     </div>
                     <div class="card-body">
+                        <?php include('message.php') ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
