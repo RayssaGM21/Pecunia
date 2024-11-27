@@ -106,7 +106,8 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
             <div class="saldo <?=$status?>">
                 <h4>Saldo do Mês: R$ <?= number_format($saldo, 2, ',', '.') ?></h4>
             </div>
-
+                        
+            <?php include('message.php') ?>
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
