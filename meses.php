@@ -13,7 +13,7 @@ $mes = mysqli_query($conn, $sqlMes);
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT meses.*, mes.nome AS nome_mes FROM meses JOIN mes ON meses.nome = mes.id WHERE meses.id = $id";
-    
+
     $mesesList = mysqli_query($conn, $sql);
     $mesesList = mysqli_fetch_assoc($mesesList);
 }
@@ -94,22 +94,31 @@ if (isset($_GET['id'])) {
                                         <td><?php echo $mese['ano'] ?></td>
                                         <td class="<?= $status ?>">R$<?php echo number_format($mese['saldo'], 2, ',', '.') ?></td>
                                         <td>
-                                            <a href="financas-edit.php" class="btn btn-secondary btn-sm">
-                                                <i class="bi bi-plus icone-mais"></i>
-                                            </a>
-                                            <a href="javascript:void(0);"
-                                                class="btn btn-secondary btn-sm edit-link"
-                                                data-id="<?= $mese['id'] ?>"
-                                                data-nome="<?= $mese['nome'] ?>"
-                                                data-ano="<?= $mese['ano'] ?>"
-                                                data-saldo="<?= $mese['saldo'] ?>">
-                                                <i class="bi bi-pencil-fill"></i>
-                                            </a>
-                                            <form action="acoes.php" method="POST" class="d-inline">
-                                                <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_mes" value="<?= $mese['id'] ?>" type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash-fill"></i>
+                                            <div class="btn-group">
+                                                <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Ações
                                                 </button>
-                                            </form>
+                                                <div class="dropdown-menu">
+                                                    <div class="ajuste-dropdown">
+                                                        <a href="financas-edit.php" class="btn btn-secondary btn-sm">
+                                                            <i class="bi bi-plus icone-mais"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0);"
+                                                            class="btn btn-secondary btn-sm edit-link"
+                                                            data-id="<?= $mese['id'] ?>"
+                                                            data-nome="<?= $mese['nome'] ?>"
+                                                            data-ano="<?= $mese['ano'] ?>"
+                                                            data-saldo="<?= $mese['saldo'] ?>">
+                                                            <i class="bi bi-pencil-fill"></i>
+                                                        </a>
+                                                        <form action="acoes.php" method="POST" class="d-inline">
+                                                            <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_mes" value="<?= $mese['id'] ?>" type="submit" class="btn btn-danger btn-sm">
+                                                                <i class="bi bi-trash-fill"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
