@@ -19,17 +19,23 @@
     border-radius: 15px;
 
     &.positivo{
-        color: #4f8f25;
-        font-weight: 900;
+        background-color: #4f8f25;
+        & h4{
+            color: #ffff;
+        }
     }
 
     &.negativo{
-        color: #942525;
-        font-weight: 900;
+        background-color: #942525;
+        & h4{
+            color: #ffff;
+        }
     }
 
     &.neutro{
-        color: #f2c14e;
-        font-weight: 900;
+        background-color: #f2c14e;
+        & h4{
+            color: #ffff;
+        }
     }
 }
