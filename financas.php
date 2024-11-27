@@ -11,7 +11,7 @@ $sql = "
 $meses = mysqli_query($conn, $sql);
 
 $financas = [];
-$saldo = 0;  
+$saldo = 0;
 $status = 'positivo';
 
 if (isset($_POST['mes']) && !empty($_POST['mes'])) {
@@ -26,21 +26,25 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
     $financas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     $entradas = 0;
+    $qtdEntradas = 0;
+
     $saidas = 0;
+    $qtdSaidas = 0;
 
     foreach ($financas as $financa) {
         if ($financa['tipo'] == 'ENTRADA') {
             $entradas += $financa['valor'];
+            $qtdEntradas += 1;
         }
         if ($financa['tipo'] == 'SAÍDA') {
             $saidas += $financa['valor'];
+            $qtdSaidas += 1;
         }
     }
     $saldo = $entradas - $saidas;
-    if ($saldo < 0){
+    if ($saldo < 0) {
         $status = 'negativo';
-    }
-    elseif ($saldo == 0){
+    } elseif ($saldo == 0) {
         $status = 'neutro';
     }
 }
@@ -102,9 +106,23 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
                     <i class="bi bi-piggy-bank"></i> Adicionar Finança
                 </a>
             </h3>
-            
-            <div class="saldo <?=$status?>">
-                <h4>Saldo do Mês: R$ <?= number_format($saldo, 2, ',', '.') ?></h4>
+
+            <div id="infos">
+                <div class="saldo <?= $status ?>">
+                    <div class="conteudo">
+                        <h4>Saldo do Mês: R$ <?= number_format($saldo, 2, ',', '.') ?></h4>
+                    </div>
+                </div>
+
+                <div id="entrada">
+                    <h6>Quantidade de entradas: <bold><?= $qtdEntradas ?></bold></h6>
+                    <h6>Entradas do Mês: R$ <?= number_format($entradas, 2, ',', '.') ?></h6>
+                </div>
+
+                <div id="saida">
+                    <h6>Quantidade de saídas: <?= $qtdSaidas ?></h6>
+                    <h6>Saídas do Mês: R$ -<?= number_format($saidas, 2, ',', '.') ?></h6>
+                </div>
             </div>
 
             <table class="table table-bordered mt-3">
