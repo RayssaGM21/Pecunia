@@ -133,7 +133,7 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
                                 <form action="acoes.php" method="POST" class="d-inline">
-                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_usuario" value="<?= $financa['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
+                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_financa" value="<?= $financa['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </td>
                         </tr>
