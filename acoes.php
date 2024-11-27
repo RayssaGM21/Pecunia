@@ -7,6 +7,7 @@ if (isset($_POST['create-mes'])) {
     $ano = trim($_POST['txt-ano']);
 
     $sql = "INSERT INTO meses (nome, ano) VALUES ('$nomeMes', '$ano')";
+    
     mysqli_query($conn, $sql);
     header('Location: meses.php');
     exit();
@@ -42,24 +43,32 @@ if (isset($_POST['edit_mes'])) {
     } catch (Exception $e) {
         mysqli_rollback($conn);
     }
+
+    if (mysqli_affected_rows($conn) > 0) {
+        $_SESSION['message'] = "Mês com ID {$idMes} editado com sucesso!";
+        $_SESSION['type'] = 'success';
+    } else {
+        $_SESSION['message'] = "Ops! Não foi possível editar o mês";
+        $_SESSION['type'] = 'error';
+    }
 }
 
 
 if (isset($_POST['delete_mes'])) {
-    $mesId = mysqli_real_escape_string($conn, $_POST['delete_mes']);
-    $sql = "DELETE FROM meses WHERE id = '$mesId'";
+    $idMes = mysqli_real_escape_string($conn, $_POST['delete_mes']);
+    $sql = "DELETE FROM meses WHERE id = '$idMes'";
 
     mysqli_query($conn, $sql);
-
+    header('Location: meses.php');
+    exit();
+    
     if (mysqli_affected_rows($conn) > 0) {
-        $_SESSION['message'] = "Mês com ID {$mesId} excluído com sucesso!";
+        $_SESSION['message'] = "Mês com ID {$idMes} excluído com sucesso!";
         $_SESSION['type'] = 'success';
     } else {
         $_SESSION['message'] = "Ops! Não foi possível excluir o mês";
         $_SESSION['type'] = 'error';
     }
-    header('Location: meses.php');
-    exit();
 }
 
 
@@ -78,27 +87,36 @@ if (isset($_POST['edit_categoria'])) {
     $descricaoCategoria = trim($_POST['txt-descricao-categoria-edit']);
 
     $sql = "UPDATE categoria SET nome = '$nomeCategoria', descricao = '$descricaoCategoria' WHERE id = '$idCategoria'";
+    
     mysqli_query($conn, $sql);
     header('Location: categoria.php');
     exit();
+
+    if (mysqli_affected_rows($conn) > 0) {
+        $_SESSION['message'] = "Categoria com ID {$idCategoria} editado com sucesso!";
+        $_SESSION['type'] = 'success';
+    } else {
+        $_SESSION['message'] = "Ops! Não foi possível editar a categoria";
+        $_SESSION['type'] = 'error';
+    }
 }
 
 
 if (isset($_POST['delete_categoria'])) {
-    $categoriaId = mysqli_real_escape_string($conn, $_POST['delete_categoria']);
-    $sql = "DELETE FROM categoria WHERE id = '$categoriaId'";
+    $idCategoria = mysqli_real_escape_string($conn, $_POST['delete_categoria']);
+    $sql = "DELETE FROM categoria WHERE id = '$idCategoria'";
 
     mysqli_query($conn, $sql);
-
+    header('Location: categoria.php');
+    exit();
+    
     if (mysqli_affected_rows($conn) > 0) {
-        $_SESSION['message'] = "Categoria com ID {$categoriaId} excluído com sucesso!";
+        $_SESSION['message'] = "Categoria com ID {$idCategoria} excluído com sucesso!";
         $_SESSION['type'] = 'success';
     } else {
         $_SESSION['message'] = "Ops! Não foi possível excluir a categoria";
         $_SESSION['type'] = 'error';
     }
-    header('Location: categoria.php');
-    exit();
 }
 
 
@@ -130,6 +148,14 @@ if (isset($_POST['create-financa'])) {
     mysqli_query($conn, $sqlUpdateSaldo);
     header('Location: financas.php');
     exit();
+    
+    if (mysqli_affected_rows($conn) > 0){
+        $_SESSION['message'] = "Movimentação Financeira com ID {$idFinanca} editada com sucesso!";
+        $_SESSION['type'] = 'success';
+    } else {
+        $_SESSION['message'] = "Ops! Não foi possível editar a movimentação Financeira";
+        $_SESSION['type'] = 'error';
+    }
 }
 
 
@@ -163,4 +189,29 @@ if (isset($_POST['edit_financa'])) {
     mysqli_query($conn, $sqlUpdateSaldo);
     header('Location: financas.php');
     exit();
+    
+    if (mysqli_affected_rows($conn) > 0){
+        $_SESSION['message'] = "Movimentação Financeira com ID {$idFinanca} editada com sucesso!";
+        $_SESSION['type'] = 'success';
+    } else {
+        $_SESSION['message'] = "Ops! Não foi possível editar a movimentação Financeira";
+        $_SESSION['type'] = 'error';
+    }
 }
+
+if (isset($_POST['delete_financa'])) {
+    $IdFinanca = mysqli_real_escape_string($conn, $_POST['edit-id']);
+    $sql = "DELETE FROM financas WHERE id = '$idFinanca'";
+    mysqli_query($conn, $sql);
+    header('Location: financas.php');
+    exit();
+    
+    if (mysqli_affected_rows($conn) > 0){
+        $_SESSION['message'] = "Movimentação Financeira com ID {$idFinanca} excluída com sucesso!";
+        $_SESSION['type'] = 'success';
+    } else {
+        $_SESSION['message'] = "Ops! Não foi possível esxcluir a movimentação Financeira";
+        $_SESSION['type'] = 'error';
+    }
+}
+    
