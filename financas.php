@@ -62,8 +62,9 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Global css -->
     <link rel="stylesheet" href="./css/global.css">
+    <!-- Financas css -->
     <link rel="stylesheet" href="./css/financas.css">
-    <title>Pecunia</title>
+    <title>Finanças</title>
 </head>
 
 <body>
@@ -124,7 +125,8 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
                     <h6>Saídas do Mês: R$ -<?= number_format($saidas, 2, ',', '.') ?></h6>
                 </div>
             </div>
-
+                        
+            <?php include('message.php') ?>
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
@@ -151,7 +153,7 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
                                 <form action="acoes.php" method="POST" class="d-inline">
-                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_usuario" value="<?= $financa['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
+                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_financa" value="<?= $financa['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </td>
                         </tr>
