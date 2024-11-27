@@ -12,6 +12,7 @@ if (isset($_POST['create-mes'])) {
     exit();
 }
 
+
 if (isset($_POST['edit_mes'])) {
     $idMes = mysqli_real_escape_string($conn, $_POST['edit-id']);
     $novoMesNome = intval(trim($_POST['txt-nome-mes-edit']));
@@ -36,12 +37,10 @@ if (isset($_POST['edit_mes'])) {
         }
 
         mysqli_commit($conn);
-        echo "Mês e finanças associados atualizados com sucesso.";
         header('Location: meses.php');
         exit();
     } catch (Exception $e) {
         mysqli_rollback($conn);
-        echo "Erro ao atualizar o mês e finanças: " . $e->getMessage();
     }
 }
 
@@ -63,6 +62,7 @@ if (isset($_POST['delete_mes'])) {
     exit();
 }
 
+
 if (isset($_POST['create-categoria'])) {
     $nomeCategoria = trim($_POST['txt-nome-categoria']);
     $descricaoCategoria = trim(($_POST['txt-descricao-categoria']));
@@ -82,6 +82,7 @@ if (isset($_POST['edit_categoria'])) {
     header('Location: categoria.php');
     exit();
 }
+
 
 if (isset($_POST['delete_categoria'])) {
     $categoriaId = mysqli_real_escape_string($conn, $_POST['delete_categoria']);
@@ -140,7 +141,6 @@ if (isset($_POST['edit_financa'])) {
     $tipo = trim($_POST['txt-tipo']);
     $categoriaId = mysqli_real_escape_string($conn, $_POST['txt-categoria']);
     $idMes = trim($_POST['edit-id-mes']);
-
 
     $sql = "UPDATE financas 
             SET valor = '$valor', descricao = '$descricao', data = '$data', tipo = '$tipo', fk_categoria_id = '$categoriaId' 
