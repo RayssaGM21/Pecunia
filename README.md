@@ -67,7 +67,7 @@ A **Pecúnia Sistem**, uma empresa reconhecida pela seriedade e excelência no d
 **Doscente:** Valdir Junior \
 **Discentes:**  
 - __RA:__ 2001130 __Nome:__ Rayssa Gomides Marconato  
-- __RA:__ __Nome:__  
+- __RA:__ 1997058 __Nome:__ Maísa Amaral
 - __RA:__ __Nome:__
 
 ---
