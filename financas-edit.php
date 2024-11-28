@@ -54,11 +54,14 @@ $categorias = mysqli_query($conn, $sqlCategorias);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Global css -->
     <link rel="stylesheet" href="./css/global.css">
+    <!-- Finanças css -->
+    <link rel="stylesheet" href="./css/financas.css">
+
     <title>Editar Finança</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light mb-5">
         <div class="d-flex ms-5">
             <div class="mx-3">
                 <a class="navbar-brand" href="index.php">

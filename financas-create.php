@@ -63,7 +63,7 @@ $categorias = mysqli_query($conn, $sqlCategorias);
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body corpo-card">
+                    <div class="card-body">
                         <form action="acoes.php" method="POST">
                             <input type="hidden" name="fk_mes_id" value="<?php echo $idMes; ?>">
                             <div class="mb-3">

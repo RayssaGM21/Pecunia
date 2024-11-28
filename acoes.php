@@ -43,14 +43,6 @@ if (isset($_POST['edit_mes'])) {
     } catch (Exception $e) {
         mysqli_rollback($conn);
     }
-
-    if (mysqli_affected_rows($conn) > 0) {
-        $_SESSION['message'] = "Mês com ID {$idMes} editado com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível editar o mês";
-        $_SESSION['type'] = 'error';
-    }
 }
 
 
@@ -61,14 +53,6 @@ if (isset($_POST['delete_mes'])) {
     mysqli_query($conn, $sql);
     header('Location: meses.php');
     exit();
-    
-    if (mysqli_affected_rows($conn) > 0) {
-        $_SESSION['message'] = "Mês com ID {$idMes} excluído com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível excluir o mês";
-        $_SESSION['type'] = 'error';
-    }
 }
 
 
@@ -91,14 +75,6 @@ if (isset($_POST['edit_categoria'])) {
     mysqli_query($conn, $sql);
     header('Location: categoria.php');
     exit();
-
-    if (mysqli_affected_rows($conn) > 0) {
-        $_SESSION['message'] = "Categoria com ID {$idCategoria} editado com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível editar a categoria";
-        $_SESSION['type'] = 'error';
-    }
 }
 
 
@@ -109,14 +85,6 @@ if (isset($_POST['delete_categoria'])) {
     mysqli_query($conn, $sql);
     header('Location: categoria.php');
     exit();
-    
-    if (mysqli_affected_rows($conn) > 0) {
-        $_SESSION['message'] = "Categoria com ID {$idCategoria} excluído com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível excluir a categoria";
-        $_SESSION['type'] = 'error';
-    }
 }
 
 
@@ -148,14 +116,6 @@ if (isset($_POST['create-financa'])) {
     mysqli_query($conn, $sqlUpdateSaldo);
     header('Location: financas.php');
     exit();
-    
-    if (mysqli_affected_rows($conn) > 0){
-        $_SESSION['message'] = "Movimentação Financeira com ID {$idFinanca} editada com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível editar a movimentação Financeira";
-        $_SESSION['type'] = 'error';
-    }
 }
 
 
@@ -189,29 +149,14 @@ if (isset($_POST['edit_financa'])) {
     mysqli_query($conn, $sqlUpdateSaldo);
     header('Location: financas.php');
     exit();
-    
-    if (mysqli_affected_rows($conn) > 0){
-        $_SESSION['message'] = "Movimentação Financeira com ID {$idFinanca} editada com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível editar a movimentação Financeira";
-        $_SESSION['type'] = 'error';
-    }
 }
 
 if (isset($_POST['delete_financa'])) {
-    $IdFinanca = mysqli_real_escape_string($conn, $_POST['edit-id']);
+    $idFinanca = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "DELETE FROM financas WHERE id = '$idFinanca'";
+    echo $sql;
     mysqli_query($conn, $sql);
     header('Location: financas.php');
     exit();
-    
-    if (mysqli_affected_rows($conn) > 0){
-        $_SESSION['message'] = "Movimentação Financeira com ID {$idFinanca} excluída com sucesso!";
-        $_SESSION['type'] = 'success';
-    } else {
-        $_SESSION['message'] = "Ops! Não foi possível esxcluir a movimentação Financeira";
-        $_SESSION['type'] = 'error';
-    }
 }
     

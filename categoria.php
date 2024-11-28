@@ -50,7 +50,6 @@ $categoria = mysqli_query($conn, $sql);
                         </h4>
                     </div>
                     <div class="card-body">
-                        <?php include('message.php') ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -68,7 +67,7 @@ $categoria = mysqli_query($conn, $sql);
                                         <td><?php echo $cat['descricao'] ?></td>
                                         <td>
                                             <a href="javascript:void(0);"
-                                                class="btn btn-secondary btn-sm edit-link"
+                                                class="btn botao btn-sm edit-link"
                                                 data-id="<?= $cat['id'] ?>"
                                                 data-nome="<?= $cat['nome'] ?>"
                                                 data-descricao="<?= $cat['descricao'] ?>">

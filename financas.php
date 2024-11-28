@@ -126,7 +126,6 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
                 </div>
             </div>
                         
-            <?php include('message.php') ?>
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
@@ -149,10 +148,11 @@ if (isset($_POST['mes']) && !empty($_POST['mes'])) {
                             <td class="<?= $financa['tipo'] ?>"><?= $financa['tipo'] ?></td>
                             <td><?= $financa['nome_categoria'] ?></td>
                             <td>
-                                <a href="financas-edit.php?id=<?= $financa['id'] ?>" class="btn btn-secondary btn-sm">
+                                <a href="financas-edit.php?id=<?= $financa['id'] ?>" class="btn botao btn-sm">
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
                                 <form action="acoes.php" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" id="id" value="<?php echo $financa['id']?>">
                                     <button onclick="return confirm('Tem certeza que deseja excluir?')" name="delete_financa" value="<?= $financa['id'] ?>" type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </td>
