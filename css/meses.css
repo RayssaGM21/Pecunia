@@ -1,21 +1,22 @@
 .positivo{
-    color: #4f8f25 !important;
-    font-weight: 900 !important;
+    color: #4f8f25 !important; 
+    font-weight: 700 !important;
 }
 
 .negativo{
-    color: #942525 !important;
-    font-weight: 900 !important;
+    color: #DB504A !important;
+    font-weight: 700 !important;
     
 }
 
 .neutro{
     color: #f2c14e !important;
-    font-weight: 900 !important;
+    font-weight: 700 !important;
 }
 
 .icone-mais{
-    font-weight: 900 !important;
+    font-weight: 700 !important;
+    color: #ffff !important;
 }
 
 .ajuste-dropdown{

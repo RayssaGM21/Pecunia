@@ -6,58 +6,65 @@
 }
 
 .ENTRADA {
-    color: green !important;
+    color: #4f8f25 !important;
+    font-weight: 700;
 }
 
 .SAÍDA {
-    color: red !important;
+    color: #DB504A !important;
+    font-weight: 700;
 }
 
 .saldo {
-    width: 50%;
+    width: 380px;
     border-radius: 15px;
     display: flex;
     justify-content: center;
     text-align: center;
 
     &.positivo {
-        background-color: #90EE90;
+        background-color: #4f8f25;
+        color: #ffff;
     }
 
     &.negativo {
-        background-color: #8B0000;
+        background-color: #DB504A;
         color: #ffff;
     }
 
     &.neutro {
-        background-color: #FFD700;
+        background-color: #f2c14e;
+        color: #ffff;
     }
 }
 
 .conteudo {
-    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
 }
 
 #infos {
     display: flex;
+    align-items: center;
     gap: 8px;
-    /* height: 60px; */
-    /* width: 100%; */
 }
 
 #entrada {
-    /* width: 25%; */
-    /* background-color: #caffca; */
-    /* border-radius: 15px; */
+    background-color: #f8f9fa;
+    border-radius: 15px;
     justify-content: center;
-    /* margin: 0 auto; */
+    padding: 10px;
+    height: 75px;    
     align-items: end;
 }
 
 #saida {
-    /* width: 25%; */
-    /* background-color: #fcb1b1; */
-    /* border-radius: 15px; */
+    height: 75px;    
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 15px;
     justify-content: center;
     align-items: end;
 }
