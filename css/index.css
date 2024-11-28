@@ -5,12 +5,22 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 .pecunia {
-    height: 70px;
+	height: 70px;
 }
+
 .items {
-    text-decoration: none;
-    color: #947125;
+	text-decoration: none;
+	color: #947125;
+}
+
+.card {
+	background: white;
+	margin: 20px 0;
+	padding: 15px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 :root {
@@ -18,7 +28,7 @@
 	--lato: 'Lato', sans-serif;
 
 	--light: #F9F9F9;
-	--blue: #3ba84a;
+	--blue: #4f8f25;
 	--light-blue: #CFE8FF;
 	--grey: #eee;
 	--dark-grey: #AAAAAA;
@@ -41,56 +51,62 @@ body {
 }
 
 h5 {
-    text-align: left;
+	text-align: left;
 }
 
-/* CONTENT */
 #content {
 	position: center;
-	width: calc(100% );
+	width: calc(100%);
 	left: 280px;
 	transition: .3s ease;
 }
 
-/* MAIN */
 #content main {
 	width: 100%;
 	padding: 36px 24px;
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
-    text-align: center;
-    
+	text-align: center;
+
 }
+
 #content main .head-title {
+	color: #947125;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	grid-gap: 16px;
 	flex-wrap: wrap;
 }
+
 #content main .head-title .left h1 {
 	font-size: 36px;
 	font-weight: 600;
 	margin-bottom: 10px;
 	color: var(--dark);
 }
+
 #content main .head-title .left .breadcrumb {
 	display: flex;
 	align-items: center;
 	grid-gap: 16px;
 }
+
 #content main .head-title .left .breadcrumb li {
 	color: var(--dark);
 }
+
 #content main .head-title .left .breadcrumb li a {
 	color: var(--dark-grey);
 	pointer-events: none;
 }
+
 #content main .head-title .left .breadcrumb li a.active {
 	color: var(--blue);
 	pointer-events: unset;
 }
+
 #content main .head-title .btn-download {
 	height: 36px;
 	padding: 0 16px;
@@ -113,6 +129,7 @@ h5 {
 	grid-gap: 24px;
 	margin-top: 36px;
 }
+
 #content main .box-info li {
 	padding: 24px;
 	background: var(--light);
@@ -121,33 +138,39 @@ h5 {
 	align-items: center;
 	grid-gap: 24px;
 }
+
 #content main .box-info li .bx {
 	width: 80px;
 	height: 80px;
 	border-radius: 10px;
 	font-size: 36px;
 	display: flex;
-	
+
 }
+
 #content main .box-info li:nth-child(1) .bx {
 	background: var(--light-blue);
 	color: var(--blue);
 }
+
 #content main .box-info li:nth-child(2) .bx {
 	background: var(--light-yellow);
 	color: var(--yellow);
 }
+
 #content main .box-info li:nth-child(3) .bx {
 	background: var(--light-orange);
 	color: var(--red);
 }
+
 #content main .box-info li .text h3 {
 	font-size: 24px;
 	font-weight: 600;
 	color: var(--dark);
 }
+
 #content main .box-info li .text p {
-	color: var(--dark);	
+	color: var(--dark);
 }
 
 
@@ -162,23 +185,27 @@ h5 {
 	width: 100%;
 	color: var(--dark);
 }
-#content main .table-data > div {
+
+#content main .table-data>div {
 	border-radius: 20px;
 	background: var(--light);
 	padding: 24px;
 	overflow-x: auto;
 }
+
 #content main .table-data .head {
 	display: flex;
 	align-items: center;
 	grid-gap: 16px;
 	margin-bottom: 24px;
 }
+
 #content main .table-data .head h3 {
 	margin-right: auto;
 	font-size: 24px;
 	font-weight: 600;
 }
+
 #content main .table-data .head .bx {
 	cursor: pointer;
 }
@@ -187,34 +214,41 @@ h5 {
 	flex-grow: 1;
 	flex-basis: 500px;
 }
+
 #content main .table-data .order table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
 #content main .table-data .order table th {
 	padding-bottom: 12px;
 	font-size: 13px;
 	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
+
 #content main .table-data .order table td {
 	padding: 16px 0;
 }
+
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
 	grid-gap: 12px;
 	padding-left: 6px;
 }
+
 #content main .table-data .order table td img {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
 	object-fit: cover;
 }
+
 #content main .table-data .order table tbody tr:hover {
 	background: var(--grey);
 }
+
 #content main .table-data .order table tr td .status {
 	font-size: 10px;
 	padding: 6px 16px;
@@ -222,12 +256,15 @@ h5 {
 	border-radius: 20px;
 	font-weight: 700;
 }
+
 #content main .table-data .order table tr td .status.completed {
 	background: var(--blue);
 }
+
 #content main .table-data .order table tr td .status.process {
 	background: var(--yellow);
 }
+
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
 }
@@ -237,9 +274,11 @@ h5 {
 	flex-grow: 1;
 	flex-basis: 300px;
 }
+
 #content main .table-data .todo .todo-list {
 	width: 100%;
 }
+
 #content main .table-data .todo .todo-list li {
 	width: 100%;
 	margin-bottom: 16px;
@@ -250,15 +289,26 @@ h5 {
 	justify-content: space-between;
 	align-items: center;
 }
+
 #content main .table-data .todo .todo-list li.completed {
 	border-left: 10px solid var(--blue);
 }
+
 #content main .table-data .todo .todo-list li.not-completed {
 	border-left: 10px solid var(--orange);
 }
 
-/* MAIN */
-/* CONTENT */
+#categoryChart {
+	width: 100% !important;
+	max-width: 300px !important;
+	height: 300px !important;
+}
+
+#grafico {
+	display: flex !important;
+	justify-content: center !important;
+}
+
 @media screen and (max-width: 768px) {
 	#sidebar {
 		width: 200px;
@@ -276,6 +326,6 @@ h5 {
 
 @media screen and (max-width: 576px) {
 	#content nav form .form-input input {
-		display: none;
+		display: none;
 	}
 }
