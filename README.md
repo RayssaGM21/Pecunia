@@ -77,7 +77,7 @@ A **Pecúnia Sistem**, uma empresa reconhecida pela seriedade e excelência no d
 
 ## Demonstração em vídeo
 - Um vídeo mostrando o funcionamento completo do sistema, passando por todas as telas e funcionalidades.  
-- Link para o vídeo no YouTube: [video](https://youtu.be/b0XXUEugXK4)
+- Link para o vídeo no YouTube: [Vídeo no YouTube](https://youtu.be/b0XXUEugXK4)
   
 ---
 ## Informações Acadêmicas
