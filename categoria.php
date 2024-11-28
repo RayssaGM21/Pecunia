@@ -134,8 +134,8 @@ $categoria = mysqli_query($conn, $sql);
                         </div>
 
                         <div class="mb-3">
-                            <label for="txt-descricao-categoria-edit" class="form-label">Descrição</label>
-                            <textarea type="text" id="txt-descricao-categoria-edit" class="form-control" name="txt-descricao-categoria-edit" placeholder="Digite a descrição da categoria..."></textarea>
+                            <label for="txt-descricao-categoria" class="form-label">Descrição</label>
+                            <textarea type="text" id="txt-descricao-categoria" class="form-control" name="txt-descricao-categoria" placeholder="Digite a descrição da categoria..."></textarea>
                         </div>
 
                         <div class="modal-footer">

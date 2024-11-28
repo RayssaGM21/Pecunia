@@ -100,9 +100,6 @@ if (isset($_GET['id'])) {
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <div class="ajuste-dropdown">
-                                                        <a href="financas-edit.php" class="btn btn-info btn-sm">
-                                                            <i class="bi bi-plus icone-mais"></i>
-                                                        </a>
                                                         <a href="javascript:void(0);"
                                                             class="btn botao btn-sm edit-link"
                                                             data-id="<?= $mese['id'] ?>"
