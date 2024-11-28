@@ -68,7 +68,6 @@ if (isset($_GET['id'])) {
                         </h4>
                     </div>
                     <div class="card-body">
-                        <?php include('message.php') ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -101,11 +100,11 @@ if (isset($_GET['id'])) {
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <div class="ajuste-dropdown">
-                                                        <a href="financas-edit.php" class="btn btn-secondary btn-sm">
+                                                        <a href="financas-edit.php" class="btn btn-info btn-sm">
                                                             <i class="bi bi-plus icone-mais"></i>
                                                         </a>
                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-secondary btn-sm edit-link"
+                                                            class="btn botao btn-sm edit-link"
                                                             data-id="<?= $mese['id'] ?>"
                                                             data-nome="<?= $mese['nome'] ?>"
                                                             data-ano="<?= $mese['ano'] ?>"
