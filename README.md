@@ -8,26 +8,46 @@ A **Pecúnia Sistem**, uma empresa reconhecida pela seriedade e excelência no d
 ---
 
 ## Funcionalidades  
+### 1. **Index**
+![index](prints_readme/index.png)
 
-### 1. **Tela de Visão Geral dos Meses**  
+### 2. **Tela de Visão Geral dos Meses**  
 - Apresenta a listagem de todos os meses cadastrados no sistema.  
 - Exibe o saldo final de cada mês, destacado em cores para facilitar a interpretação:  
   - **Verde**: Saldo positivo.  
   - **Vermelho**: Saldo negativo.  
-  - **Amarelo**: Saldo neutro.  
-
-### 2. **Tela de Finanças Mensais**  
+  - **Amarelo**: Saldo neutro.
+ 
+  ![meses](prints_readme/meses.png)
+  ![meses](prints_readme/meses-create.png)
+  
+  ![meses](prints_readme/meses-edit.png)
+  
+### 3. **Tela de Finanças Mensais**  
 - Permite selecionar o mês e o ano desejado por meio de um dropdown.  
 - Exibe as seguintes informações detalhadas:  
   - Saldo final do mês.  
   - Quantidade de entradas e seu valor total.  
   - Quantidade de saídas e seu valor total.  
-- Acompanhamento dinâmico das movimentações financeiras.  
+- Acompanhamento dinâmico das movimentações financeiras.
 
-### 3. **Tela de Categorias**  
+  ![financas](prints_readme/financas.png)
+  ![financas](prints_readme/financas-selecionado.png)
+  ![financas](prints_readme/financas-semMovimentacoes.png)
+  
+  ![financas](prints_readme/financas-create.png)
+  
+  ![financas](prints_readme/financas-edit.png)  
+
+### 4. **Tela de Categorias**  
 - Gerencie as categorias de despesas e receitas.  
 - Funções disponíveis:  
-  - Visualizar, cadastrar, editar e excluir categorias personalizadas.  
+  - Visualizar, cadastrar, editar e excluir categorias personalizadas.
+  
+  ![categoria](prints_readme/categoria.png)
+  ![categoria](prints_readme/categoria-create.png)
+  
+  ![categoria](prints_readme/categoria-edit.png)
 
 ---
 
@@ -57,7 +77,7 @@ A **Pecúnia Sistem**, uma empresa reconhecida pela seriedade e excelência no d
 
 ## Demonstração em vídeo
 - Um vídeo mostrando o funcionamento completo do sistema, passando por todas as telas e funcionalidades.  
-- Link para o vídeo no YouTube: **obs: add link, add dump**
+- Link para o vídeo no YouTube: [video](https://youtu.be/b0XXUEugXK4)
   
 ---
 ## Informações Acadêmicas
@@ -67,8 +87,8 @@ A **Pecúnia Sistem**, uma empresa reconhecida pela seriedade e excelência no d
 **Doscente:** Valdir Junior \
 **Discentes:**  
 - __RA:__ 2001130 __Nome:__ Rayssa Gomides Marconato  
-- __RA:__ 1997058 __Nome:__ Maísa Amaral
-- __RA:__ __Nome:__
+- __RA:__ 1997058 __Nome:__ Maisa Amaral  
+- __RA:__ 2001639 __Nome:__ Samara Adorno
 
 ---
 
